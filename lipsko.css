@@ -7,6 +7,14 @@
     background-color: yellow;
 }
 
-[data-lipsko-id] {
+[lipsko-id] {
     border-bottom: 1px gray dashed;
+}
+
+#lipsko-editor .lipsko-word:hover {
+    color: blue;
+}
+
+#lipsko-editor .lipsko-editor-word-editing {
+    background-color: pink;
 }
