@@ -1,0 +1,12 @@
+.lipsko-source, .lipsko-translation {
+    display: inline-block;
+    white-space: pre;
+}
+
+.lipsko-highlight {
+    background-color: yellow;
+}
+
+[data-lipsko-id] {
+    border-bottom: 1px gray dashed;
+}
