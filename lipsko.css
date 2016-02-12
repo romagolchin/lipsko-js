@@ -18,3 +18,8 @@
 #lipsko-editor .lipsko-editor-word-editing {
     background-color: pink;
 }
+
+.lipsko-source-markup, .lipsko-translation-markup {
+    font-size: 6px;
+    font-family: monospace;
+}
