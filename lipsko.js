@@ -1,10 +1,12 @@
 $(function() {
     $(document).on('mouseover', '[lipsko-id]', function(event) {
-        $('[lipsko-id="' + $(event.target).attr('lipsko-id') + '"]')
-            .addClass('lipsko-highlight');
+        for (var number of $(event.target).attr('lipsko-id').split(',')) {
+            $('[lipsko-id*="' + number + '"]').addClass('lipsko-highlight');
+        }
     }).on('mouseout', function(event) {
-        $('[lipsko-id="' + $(event.target).attr('lipsko-id') + '"]')
-            .removeClass('lipsko-highlight');
+        for (var number of $(event.target).attr('lipsko-id').split(',')) {
+            $('[lipsko-id*="' + number + '"]').removeClass('lipsko-highlight');
+        }
     });
 
     var id_counter = 0;
@@ -50,10 +52,10 @@ $(function() {
         } else if (!event.shiftKey && $target.parent('.lipsko-source').length) {
             $('.lipsko-editor-word-editing').removeClass('lipsko-editor-word-editing');
             $target.addClass('lipsko-editor-word-editing');
-            $target.attr('lipsko-id', ++id_counter);
+            $target.attr('lipsko-id', '[' + ++id_counter + ']');
         } else {
             $target.addClass('lipsko-editor-word-editing');
-            $target.attr('lipsko-id', id_counter);
+            $target.attr('lipsko-id', '[' + id_counter + ']');
         }
 
         update_markup();

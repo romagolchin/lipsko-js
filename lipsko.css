@@ -28,3 +28,11 @@
     font-size: 6px;
     font-family: monospace;
 }
+
+table {
+    border: 1px solid black;
+}
+
+td {
+    padding: 5px;
+}
