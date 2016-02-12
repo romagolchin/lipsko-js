@@ -11,6 +11,10 @@
     border-bottom: 1px gray dashed;
 }
 
+#lipsko-editor {
+    margin-top: 100px;
+}
+
 #lipsko-editor .lipsko-word:hover {
     color: blue;
 }
@@ -18,6 +22,7 @@
 #lipsko-editor [lipsko-id]:after{
     content: attr(lipsko-id);
     vertical-align: super;
+    font-size: 6px;
 }
 
 #lipsko-editor .lipsko-editor-word-editing {
@@ -36,4 +41,13 @@ table {
 
 td {
     padding: 2px;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+.home {
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
