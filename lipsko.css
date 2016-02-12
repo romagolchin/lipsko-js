@@ -15,6 +15,11 @@
     color: blue;
 }
 
+#lipsko-editor [lipsko-id]:after{
+    content: attr(lipsko-id);
+    vertical-align: super;
+}
+
 #lipsko-editor .lipsko-editor-word-editing {
     background-color: pink;
 }
