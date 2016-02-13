@@ -8,7 +8,7 @@
 }
 
 [lipsko-id] {
-    border-bottom: 1px gray dashed;
+    border-bottom: 1px gray dotted;
 }
 
 #lipsko-editor {
@@ -35,7 +35,7 @@
 }
 
 table {
-    border: 1px solid black;
+    /*border: 1px solid lightgray;*/
     margin: 10px;
 }
 
@@ -45,6 +45,15 @@ td {
 
 h2 {
     font-size: 14px;
+}
+
+.english-td {
+    color: gray;
+    border-bottom: 1px white solid;
+}
+
+h2:not(:first-of-type) {
+    margin-top: 30px;
 }
 
 .home {

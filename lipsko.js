@@ -60,4 +60,6 @@ $(function() {
 
         update_markup();
     });
+
+    $('td:contains("- ")').addClass('english-td');
 });
