@@ -1,10 +1,10 @@
 $(function() {
     $(document).on('mouseover', '[lipsko-id]', function(event) {
-        for (var number of $(event.target).attr('lipsko-id').split(',')) {
+        for (var number of $(event.currentTarget).attr('lipsko-id').split(',')) {
             $('[lipsko-id*="' + number + '"]').addClass('lipsko-highlight');
         }
-    }).on('mouseout', function(event) {
-        for (var number of $(event.target).attr('lipsko-id').split(',')) {
+    }).on('mouseout', '[lipsko-id]', function(event) {
+        for (var number of $(event.currentTarget).attr('lipsko-id').split(',')) {
             $('[lipsko-id*="' + number + '"]').removeClass('lipsko-highlight');
         }
     });
@@ -44,7 +44,7 @@ $(function() {
     });
 
     $(document).on('click', '#lipsko-editor .lipsko-word', function(event) {
-        var $target = $(event.target);
+        var $target = $(event.currentTarget);
         if ($target.hasClass('lipsko-editor-word-editing')) {
             $target.removeClass('lipsko-editor-word-editing')
                 .removeClass('lipsko-highlight')
