@@ -35,8 +35,7 @@
 }
 
 table {
-    /*border: 1px solid lightgray;*/
-    margin: 10px;
+    margin-left: -5px;
 }
 
 td {
@@ -45,6 +44,7 @@ td {
 
 h2 {
     font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .english-td {
