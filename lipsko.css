@@ -75,3 +75,9 @@ i {
     font-weight: 200;
     color: #666;
 }
+
+.player-wrapper {
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+}
