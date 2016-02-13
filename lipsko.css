@@ -40,7 +40,7 @@ table {
 }
 
 td {
-    padding: 2px;
+    padding: 2px 5px;
 }
 
 h2 {
@@ -59,4 +59,9 @@ h2:not(:first-of-type) {
 .home {
     margin-top: 20px;
     margin-bottom: 40px;
+}
+
+b {
+    color: #cc0000;
+    font-weight: normal;
 }
