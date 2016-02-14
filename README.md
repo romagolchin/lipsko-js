@@ -92,14 +92,14 @@ Present tense - negative
 ## Step 3. Deploy
 
 Download the files lipsko.js and lipsko.css. Create your own HTML page. Insert on top of it:
-```
+```html
 <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="lipsko.js"></script>
 <link href="lipsko.css" rel="stylesheet"/>
 ```
 
 Then put all the markup like this:
-```
+```html
 <div class="lipsko-text">
 Olen lukenut muistelmiasi[1]
 en[2],[e1] ymmärrä sinua lainkaan
@@ -123,5 +123,6 @@ Present tense - negative
 <em>et</em> ole     | - you're not
 <em>ei</em> ole[e2] | - he's/she's not
 </div>
+```
 
 Deploy and enjoy.
