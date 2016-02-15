@@ -1,0 +1,10 @@
+.home {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.player-wrapper {
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+}

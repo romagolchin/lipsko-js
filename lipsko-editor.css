@@ -1,0 +1,22 @@
+#lipsko-editor {
+    margin-top: 100px;
+}
+
+#lipsko-editor .lipsko-word:hover {
+    color: blue;
+}
+
+#lipsko-editor [lipsko-id]:after{
+    content: attr(lipsko-id);
+    vertical-align: super;
+    font-size: 6px;
+}
+
+#lipsko-editor .lipsko-editor-word-editing {
+    background-color: pink;
+}
+
+.lipsko-source-markup, .lipsko-translation-markup {
+    font-size: 6px;
+    font-family: monospace;
+}

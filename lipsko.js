@@ -9,8 +9,6 @@ $(function() {
         }
     });
 
-    var id_counter = 0;
-
     function wrap_to_spans_and_insert($demo, $editor) {
         var lines = $demo.text().trim().split("\n");
         var editor_lines = [];
@@ -26,40 +24,27 @@ $(function() {
         $editor.html(editor_lines.join("\n"));
     }
 
-    function update_markup() {
-        $('#lipsko-editor .lipsko-source-markup').val($('#lipsko-editor .lipsko-source').html());
-        $('#lipsko-editor .lipsko-translation-markup').val($('#lipsko-editor .lipsko-translation').html());
+    function init_lipsko_text(i, text_node) {
+        var $text_node = $(text_node);
+        var lines = $text_node.text().trim().split('\n');
+        var lines_with_highlight = [];
+        for (var line of lines) {
+            debugger;
+            var line_with_highlight = [];
+            for (var word of line.split(' ')) {
+                line_with_highlight.push(word.replace(/([^[]+)(\[.+\])/, function(str, p1, p2) {
+                    return '<span lipsko-id="' + p2 + '">' + p1 + '</span>';
+                }));
+            }
+            lines_with_highlight.push(line_with_highlight.join(' '));
+        }
+        $text_node.html(lines_with_highlight.join('\n'));
     }
 
-    $('#lipsko-editor-start').click(function() {
-        wrap_to_spans_and_insert($('#lipsko-demo .lipsko-source'), $('#lipsko-editor .lipsko-source'));
-        wrap_to_spans_and_insert($('#lipsko-demo .lipsko-translation'), $('#lipsko-editor .lipsko-translation'));
-        update_markup();
-    });
+    $('.lipsko-text').each(init_lipsko_text);
 
-    $('#lipsko-editor-copy').click(function() {
-        $('#lipsko-editor .lipsko-source').html($('#lipsko-demo .lipsko-source').html());
-        $('#lipsko-editor .lipsko-translation').html($('#lipsko-demo .lipsko-translation').html());
-        update_markup();
-    });
-
-    $(document).on('click', '#lipsko-editor .lipsko-word', function(event) {
-        var $target = $(event.currentTarget);
-        if ($target.hasClass('lipsko-editor-word-editing')) {
-            $target.removeClass('lipsko-editor-word-editing')
-                .removeClass('lipsko-highlight')
-                .removeAttr('lipsko-id');
-        } else if (!event.shiftKey && $target.parent('.lipsko-source').length) {
-            $('.lipsko-editor-word-editing').removeClass('lipsko-editor-word-editing');
-            $target.addClass('lipsko-editor-word-editing');
-            $target.attr('lipsko-id', '[' + ++id_counter + ']');
-        } else {
-            $target.addClass('lipsko-editor-word-editing');
-            $target.attr('lipsko-id', '[' + id_counter + ']');
-        }
-
-        update_markup();
-    });
-
-    $('td:contains("- ")').addClass('english-td');
+    // TODO:
+    // http://stackoverflow.com/questions/9213907/jquery-selector-that-simulates-starts-with-or-ends-with-for-searching-text
+    $('.lipsko-table td:contains("- ")').addClass('translation-td');
+    $('.lipsko-table td:contains("^")').addClass('header-td');
 });

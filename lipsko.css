@@ -1,5 +1,4 @@
-.lipsko-source, .lipsko-translation {
-    display: inline-block;
+.lipsko-text {
     white-space: pre;
 }
 
@@ -11,73 +10,39 @@
     border-bottom: 1px #bbb dotted;
 }
 
-#lipsko-editor {
-    margin-top: 100px;
-}
-
-#lipsko-editor .lipsko-word:hover {
-    color: blue;
-}
-
-#lipsko-editor [lipsko-id]:after{
-    content: attr(lipsko-id);
-    vertical-align: super;
-    font-size: 6px;
-}
-
-#lipsko-editor .lipsko-editor-word-editing {
-    background-color: pink;
-}
-
-.lipsko-source-markup, .lipsko-translation-markup {
-    font-size: 6px;
-    font-family: monospace;
-}
-
-table {
+.lipsko-table table {
     margin-left: -5px;
 }
 
-td {
+.lipsko-table td {
     padding: 2px 5px;
 }
 
-h2 {
+.lipsko-table h1 {
     font-size: 14px;
     margin-bottom: 8px;
 }
 
-.english-td {
+.lipsko-table .translation-td {
     color: gray;
     border-bottom: 1px white solid;
 }
 
-h2:first-of-type {
+.lipsko-table h1:first-of-type {
     margin-top: 2px;
 }
 
-h2:not(:first-of-type) {
+.lipsko-table h1:not(:first-of-type) {
     margin-top: 30px;
 }
 
-.home {
-    margin-top: 20px;
-    margin-bottom: 40px;
-}
-
-b {
+.lipsko-table em {
     color: #cc0000;
     font-weight: normal;
 }
 
-i {
+.lipsko-table .header-td {
     font-style: normal;
     font-weight: 200;
     color: #666;
-}
-
-.player-wrapper {
-    background-color: #eee;
-    padding: 20px;
-    border-radius: 10px;
 }
