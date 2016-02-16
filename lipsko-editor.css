@@ -1,22 +1,18 @@
-#lipsko-editor {
-    margin-top: 100px;
-}
-
-#lipsko-editor .lipsko-word:hover {
+.lipsko-editor .lipsko-text .lipsko-word:hover {
     color: blue;
 }
 
-#lipsko-editor [lipsko-id]:after{
+.lipsko-editor [lipsko-id]:after {
     content: attr(lipsko-id);
     vertical-align: super;
     font-size: 6px;
 }
 
-#lipsko-editor .lipsko-editor-word-editing {
+.lipsko-editor .lipsko-editor-word-editing {
     background-color: pink;
 }
 
-.lipsko-source-markup, .lipsko-translation-markup {
-    font-size: 6px;
+.lipsko-editor textarea {
+    font-size: 12px;
     font-family: monospace;
 }

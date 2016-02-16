@@ -1,53 +1,46 @@
 $(function() {
-    var id_counter = 0;
+    // var id_counter = 0;
 
-    function wrap_to_spans_and_insert($demo, $editor) {
-        var lines = $demo.text().trim().split("\n");
-        var editor_lines = [];
-        for (var line of lines) {
-            var editor_line = [];
-            for (var word of line.split(" ")) {
-                if (word) {
-                    editor_line.push('<span class="lipsko-word">' + word + '</span>');
-                }
-            }
-            editor_lines.push(editor_line.join(' '));
-        }
-        $editor.html(editor_lines.join("\n"));
+    // $(document).on('click', '#lipsko-editor .lipsko-word', function(event) {
+    //     var $target = $(event.currentTarget);
+    //     if ($target.hasClass('lipsko-editor-word-editing')) {
+    //         $target.removeClass('lipsko-editor-word-editing')
+    //             .removeClass('lipsko-highlight')
+    //             .removeAttr('lipsko-id');
+    //     } else if (!event.shiftKey && $target.parent('.lipsko-source').length) {
+    //         $('.lipsko-editor-word-editing').removeClass('lipsko-editor-word-editing');
+    //         $target.addClass('lipsko-editor-word-editing');
+    //         $target.attr('lipsko-id', '[' + ++id_counter + ']');
+    //     } else {
+    //         $target.addClass('lipsko-editor-word-editing');
+    //         $target.attr('lipsko-id', '[' + id_counter + ']');
+    //     }
+
+    //     update_markup();
+    // });
+
+    var editorPanes = [];
+
+    function EditorPane(element) {
+        this.$paneElement = $(element);
+        var text = this.$paneElement.text().trim();
+        this.$textElement = $('<div class="lipsko-text">');
+        this.$textareaElement = $('<textarea rows="20" cols="40">').val(text);
+        this.$paneElement.html('');
+        this.$paneElement.append(this.$textElement);
+        this.$paneElement.append(this.$textareaElement);
+        this.$paneElement.removeClass('lipsko-text');
+
+        this.$textareaElement.on('input', this.takeContentFromTextarea.bind(this));
+        this.takeContentFromTextarea();
     }
 
-    function update_markup() {
-        $('#lipsko-editor .lipsko-source-markup').val($('#lipsko-editor .lipsko-source').html());
-        $('#lipsko-editor .lipsko-translation-markup').val($('#lipsko-editor .lipsko-translation').html());
+    EditorPane.prototype.takeContentFromTextarea = function() {
+        this.$textElement.text(this.$textareaElement.val());
+        window.init_lipsko_text(this.$textElement);
     }
 
-    $('#lipsko-editor-start').click(function() {
-        wrap_to_spans_and_insert($('#lipsko-demo .lipsko-source'), $('#lipsko-editor .lipsko-source'));
-        wrap_to_spans_and_insert($('#lipsko-demo .lipsko-translation'), $('#lipsko-editor .lipsko-translation'));
-        update_markup();
-    });
-
-    $('#lipsko-editor-copy').click(function() {
-        $('#lipsko-editor .lipsko-source').html($('#lipsko-demo .lipsko-source').html());
-        $('#lipsko-editor .lipsko-translation').html($('#lipsko-demo .lipsko-translation').html());
-        update_markup();
-    });
-
-    $(document).on('click', '#lipsko-editor .lipsko-word', function(event) {
-        var $target = $(event.currentTarget);
-        if ($target.hasClass('lipsko-editor-word-editing')) {
-            $target.removeClass('lipsko-editor-word-editing')
-                .removeClass('lipsko-highlight')
-                .removeAttr('lipsko-id');
-        } else if (!event.shiftKey && $target.parent('.lipsko-source').length) {
-            $('.lipsko-editor-word-editing').removeClass('lipsko-editor-word-editing');
-            $target.addClass('lipsko-editor-word-editing');
-            $target.attr('lipsko-id', '[' + ++id_counter + ']');
-        } else {
-            $target.addClass('lipsko-editor-word-editing');
-            $target.attr('lipsko-id', '[' + id_counter + ']');
-        }
-
-        update_markup();
+    $('.lipsko-editor').each(function(i, node) {
+        editorPanes.push(new EditorPane(node));
     });
 });
