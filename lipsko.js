@@ -9,27 +9,48 @@ $(function() {
         }
     });
 
-    window.init_lipsko_text = function($text_node) {
+    window.lipsko_render_block = function($text_node, isTable) {
         var lines = $text_node.text().trim().split('\n');
         var lines_with_highlight = [];
-        for (var line of lines) {
+        for (var i in lines) {
+            var line = lines[i];
             var line_with_highlight = [];
             for (var word of line.split(' ')) {
                 line_with_highlight.push(word.replace(/([^[]+)(\[.+\])/, function(str, p1, p2) {
                     return '<span lipsko-id="' + p2 + '">' + p1 + '</span>';
                 }));
             }
-            lines_with_highlight.push(line_with_highlight.join(' '));
+            var line_joined = line_with_highlight.join(' ');
+            if (isTable) {
+                if (i == 0) {
+                    line_joined = '<h1>' + line_joined + '</h1><table>';
+                } else {
+                    line_joined = '<tr><td>' + line_joined.replace('|', '</td><td>') + '</td></tr>';
+                }
+                if (i == lines.length - 1) {
+                    line_joined += '</table>'
+                }
+            }
+            lines_with_highlight.push(line_joined);
         }
         $text_node.html(lines_with_highlight.join('\n'));
     }
 
     $('.lipsko-text').each(function(i, node) {
-        window.init_lipsko_text($(node));
+        window.lipsko_render_block($(node), false);
     });
 
-    // TODO:
-    // http://stackoverflow.com/questions/9213907/jquery-selector-that-simulates-starts-with-or-ends-with-for-searching-text
+    $('.lipsko-table').each(function(i, node) {
+        window.lipsko_render_block($(node), true);
+    });
+
     $('.lipsko-table td:contains("- ")').addClass('translation-td');
-    $('.lipsko-table td:contains("^")').addClass('header-td');
+    $('.lipsko-table td:contains("^")').each(function(i, node) {
+        var $node = $(node);
+        var text = $node.text().trim();
+        if (text.indexOf('^') == 0) {
+            $node.addClass('header-td');
+            $node.text(text.substr(1));
+        }
+    });
 });
