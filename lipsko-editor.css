@@ -5,7 +5,7 @@
 .lipsko-editor [lipsko-id]:after {
     content: attr(lipsko-id);
     vertical-align: super;
-    font-size: 6px;
+    font-size: 10px;
 }
 
 .lipsko-editor .lipsko-editor-word-editing {

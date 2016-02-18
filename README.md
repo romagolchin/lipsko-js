@@ -118,10 +118,10 @@ nothing about your children
 
 <div class="lipsko-table">
 Present tense - negative
-^Finnish            | ^translation
-<em>en[e1]</em> ole | - I'm not
-<em>et</em> ole     | - you're not
-<em>ei[e2]</em> ole | - he's/she's not
+^Finnish      | ^translation
+*en[e1]/* ole | - I'm not
+*et/* ole     | - you're not
+*ei[e2]/* ole | - he's/she's not
 </div>
 ```
 

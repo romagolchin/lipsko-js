@@ -24,12 +24,12 @@ $(function() {
     function EditorPane(element) {
         this.$paneElement = $(element);
         var text = this.$paneElement.text().trim();
-        this.$textElement = $('<div class="lipsko-text">');
+        this.$textElement = $('<div class="' +
+            (this.$paneElement.hasClass('lipsko-editor-table') ? 'lipsko-table' : 'lipsko-text') + '">');
         this.$textareaElement = $('<textarea rows="20" cols="40">').val(text);
         this.$paneElement.html('');
         this.$paneElement.append(this.$textElement);
         this.$paneElement.append(this.$textareaElement);
-        this.$paneElement.removeClass('lipsko-text');
 
         this.$textareaElement.on('input', this.takeContentFromTextarea.bind(this));
         this.takeContentFromTextarea();
@@ -37,7 +37,7 @@ $(function() {
 
     EditorPane.prototype.takeContentFromTextarea = function() {
         this.$textElement.text(this.$textareaElement.val());
-        window.init_lipsko_text(this.$textElement);
+        window.lipsko_render_block(this.$textElement, this.$paneElement.hasClass('lipsko-editor-table'));
     }
 
     $('.lipsko-editor').each(function(i, node) {

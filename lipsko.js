@@ -22,6 +22,7 @@ $(function() {
             }
             var line_joined = line_with_highlight.join(' ');
             if (isTable) {
+                line_joined = line_joined.replace('/*', '</em>').replace('*', '<em>');
                 if (i == 0) {
                     line_joined = '<h1>' + line_joined + '</h1><table>';
                 } else {
@@ -34,6 +35,16 @@ $(function() {
             lines_with_highlight.push(line_joined);
         }
         $text_node.html(lines_with_highlight.join('\n'));
+
+        $('.lipsko-table td:contains("- ")').addClass('translation-td');
+        $('.lipsko-table td:contains("^")').each(function(i, node) {
+            var $node = $(node);
+            var text = $node.text().trim();
+            if (text.indexOf('^') == 0) {
+                $node.addClass('header-td');
+                $node.text(text.substr(1));
+            }
+        });
     }
 
     $('.lipsko-text').each(function(i, node) {
@@ -42,15 +53,5 @@ $(function() {
 
     $('.lipsko-table').each(function(i, node) {
         window.lipsko_render_block($(node), true);
-    });
-
-    $('.lipsko-table td:contains("- ")').addClass('translation-td');
-    $('.lipsko-table td:contains("^")').each(function(i, node) {
-        var $node = $(node);
-        var text = $node.text().trim();
-        if (text.indexOf('^') == 0) {
-            $node.addClass('header-td');
-            $node.text(text.substr(1));
-        }
     });
 });
