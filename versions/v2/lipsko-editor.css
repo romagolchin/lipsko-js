@@ -1,0 +1,18 @@
+.lipsko-editor .lipsko-text .lipsko-word:hover {
+    color: blue;
+}
+
+.lipsko-editor [lipsko-id]:after {
+    content: attr(lipsko-id);
+    vertical-align: super;
+    font-size: 10px;
+}
+
+.lipsko-editor .lipsko-editor-word-editing {
+    background-color: pink;
+}
+
+.lipsko-editor textarea {
+    font-size: 12px;
+    font-family: monospace;
+}

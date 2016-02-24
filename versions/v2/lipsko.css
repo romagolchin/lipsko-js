@@ -1,0 +1,48 @@
+.lipsko-text {
+    white-space: pre;
+}
+
+.lipsko-highlight {
+    background-color: #ff6;
+}
+
+[lipsko-id] {
+    border-bottom: 1px #000 dotted;
+}
+
+.lipsko-table table {
+    margin-left: -5px;
+}
+
+.lipsko-table td {
+    padding: 2px 5px;
+}
+
+.lipsko-table h1 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.lipsko-table .translation-td {
+    color: gray;
+    border-bottom: 1px white solid;
+}
+
+.lipsko-table h1:first-of-type {
+    margin-top: 2px;
+}
+
+.lipsko-table h1:not(:first-of-type) {
+    margin-top: 30px;
+}
+
+.lipsko-table em {
+    color: #cc0000;
+    font-style: normal;
+}
+
+.lipsko-table .header-td {
+    font-style: normal;
+    font-weight: 200;
+    color: #666;
+}
